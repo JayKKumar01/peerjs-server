@@ -14,8 +14,6 @@ const peerServer = PeerServer({
   secure: true  // Enable HTTPS for secure connections
 });
 
-// Integrate PeerJS server into your Express app
-app.use('/peerjs', peerServer);
 
 // Serve the static files (index.html, etc.)
 app.use(express.static(path.join(__dirname, 'public')));
