@@ -13,10 +13,10 @@
   <script>
     // Connect to the PeerJS server hosted on Render
     const peer = new Peer({
-      host: 'localhost',  // Replace with your actual Render URL
+      host: 'jaykkumar01-peer-server.onrender.com',  // Replace with your actual Render URL
       port: 9000,
-      path: '/peerjs'
-    //   ,secure: true  // Use 'secure' for HTTPS
+      path: '/peerjs',
+      secure: true  // Use 'secure' for HTTPS
     });
 
     peer.on('open', function (id) {
