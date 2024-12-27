@@ -19,8 +19,8 @@
   const peer = new Peer({
     host: isLocal ? local : link,
     port: 8000,
-    path: '/',
-    secure: isLocal, // Use secure=true for HTTPS when not local
+    path: '/peerjs',
+    secure: !isLocal, // Use secure=true for HTTPS when not local
   });
 
     peer.on('open', function (id) {

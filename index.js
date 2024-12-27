@@ -10,7 +10,7 @@ const port = process.env.PORT || 3000;
 // Set up the PeerJS server and bind it to the path '/peerjs'
 const peerServer = PeerServer({
   port: 8000,   // PeerJS should run on this port
-  path: '/', // Custom path for PeerJS
+  path: '/peerjs', // Custom path for PeerJS
   secure: true  // Enable HTTPS for secure connections
 });
 
