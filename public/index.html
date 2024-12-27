@@ -11,17 +11,17 @@
   <p>Your connected Peer ID: <span id="peer-id">Connecting...</span></p>
 
   <script>
-    // Connect to the PeerJS server hosted on Render
     const link = "jaykkumar01-peer-server.onrender.com";
-  const local = "localhost";
-  let isLocal = false;
+const local = "localhost";
+let isLocal = false; // Set to false when deployed
 
-  const peer = new Peer({
-    host: isLocal ? local : link,
-    port: 8000,
-    path: '/peerjs',
-    secure: !isLocal, // Use secure=true for HTTPS when not local
-  });
+const peer = new Peer({
+  host: isLocal ? local : link,
+  port: isLocal ? 8000 : 443, // Render uses port 443 for HTTPS
+  path: '/peerjs',
+  secure: !isLocal, // Secure=true for Render
+});
+
 
     peer.on('open', function (id) {
       document.getElementById('peer-id').textContent = id;
