@@ -20,7 +20,7 @@
     host: isLocal ? local : link,
     port: 8000,
     path: '/',
-    secure: !isLocal, // Use secure=true for HTTPS when not local
+    secure: isLocal, // Use secure=true for HTTPS when not local
   });
 
     peer.on('open', function (id) {
