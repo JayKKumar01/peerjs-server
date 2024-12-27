@@ -4,15 +4,24 @@ const path = require('path');
 
 const app = express();
 
-// Use PORT from environment variable or default to 3000 if not defined
+// Use the PORT from Render environment variable or default to 3000 for local testing
 const port = process.env.PORT || 3000;
 
-// Set up the PeerJS server (using Render's dynamic port)
-const peerServer = PeerServer({ port: 9000, path: '/peerjs' });
+// Set up the PeerJS server and bind it to the path '/peerjs'
+const peerServer = PeerServer({
+  port: 8000,   // PeerJS should run on this port
+  path: '/', // Custom path for PeerJS
+  secure: true  // Enable HTTPS for secure connections
+});
 
-// Serve the HTML file
+// Integrate PeerJS server into your Express app
+// app.use('/peerjs', peerServer);
+
+// Serve the static files (index.html, etc.)
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Start the Express server
 app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
+  console.log(`Web server running on http://localhost:${port}`);
 });
+
