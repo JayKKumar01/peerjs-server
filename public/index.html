@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PeerJS Connection</title>
+  <script src="https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js"></script>
+</head>
+<body>
+  <h1>PeerJS Connection</h1>
+  <p>Your connected Peer ID: <span id="peer-id">Connecting...</span></p>
+
+  <script>
+    // Connect to the PeerJS server hosted on Render
+    const peer = new Peer({
+      host: 'localhost',  // Replace with your actual Render URL
+      port: 9000,
+      path: '/peerjs'
+    //   ,secure: true  // Use 'secure' for HTTPS
+    });
+
+    peer.on('open', function (id) {
+      document.getElementById('peer-id').textContent = id;
+    });
+
+    peer.on('error', function (err) {
+      console.log('Error: ', err);
+      document.getElementById('peer-id').textContent = 'Error connecting to PeerJS';
+    });
+  </script>
+</body>
+</html>
